@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: vault-secret
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://k3s.club012.com:5432/vault_db
+    username: vault_user
+    password: vault_password
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      # Hibernate ddl auto (create, create-drop, validate, update)
+      ddl-auto: create
+    show-sql: true
