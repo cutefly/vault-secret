@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: vault-secret
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      # Hibernate ddl auto (create, create-drop, validate, update)
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8082
+    

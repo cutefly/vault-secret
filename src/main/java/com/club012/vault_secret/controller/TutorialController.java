@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.club012.vault_secret.model.Tutorial;
 import com.club012.vault_secret.repositories.TutorialRepository;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
 public class TutorialController {
@@ -30,7 +30,7 @@ public class TutorialController {
     TutorialRepository tutorialRepository;
 
     @GetMapping("/tutorials")
-    public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
+    public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(name = "title", required = false) String title) {
         try {
             List<Tutorial> tutorials = new ArrayList<>();
 

@@ -1,0 +1,30 @@
+# GET
+http://localhost:8082/
+
+###
+GET http://localhost:8082/api/tutorials
+
+###
+POST http://localhost:8082/api/tutorials
+Content-Type: application/json; charset=UTF-8
+
+{
+    "title": "title-5",
+    "description": "desc-5"
+}
+
+###
+PUT http://localhost:8082/api/tutorials/53
+Content-Type: application/json; charset=UTF-8
+
+{
+    "title": "title-53",
+    "description": "desc-53",
+    "published": true
+}
+
+###
+DELETE http://localhost:8082/api/tutorials/52
+
+###
+GET http://localhost:8082/api/tutorials/published

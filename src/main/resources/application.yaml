@@ -2,15 +2,37 @@ spring:
   application:
     name: vault-secret
 
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://k3s.club012.com:5432/vault_db
-    username: vault_user
-    password: vault_password
+  config:
+      import:
+        - optional:file:./env/.env.${spring.profiles.active}[.properties] # local
+        - vault://
+
+  # datasource:
+  #   driver-class-name: org.postgresql.Driver
+  #   url: ${DATASOURCE_URL}
+  #   username: ${DATASOURCE_USERNAME}
+  #   password: ${DATASOURCE_PASSWORD}
 
   jpa:
     generate-ddl: true
     hibernate:
       # Hibernate ddl auto (create, create-drop, validate, update)
       ddl-auto: create
-    show-sql: true
+    show-sql: false
+
+  cloud:
+    vault:
+      uri: https://vault.club012.com # vault domain uri (port: 8200)
+      authentication: TOKEN
+      token: ${VAULT_AUTH_TOKEN} # vault auth token
+      connection-timeout: 3000
+      read-timeout: 10000
+      kv:
+        backend: secret
+        application-name: vault-secret
+        default-context:
+        profiles: ${spring.profiles.active}
+
+server:
+  port: 8081
+    
