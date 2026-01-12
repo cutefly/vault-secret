@@ -1,4 +1,4 @@
-package com.club012.vault_secret.model;
+package com.club012.vault.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

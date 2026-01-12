@@ -1,4 +1,4 @@
-package com.club012.vault_secret;
+package com.club012.vault;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

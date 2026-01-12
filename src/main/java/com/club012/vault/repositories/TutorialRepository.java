@@ -1,10 +1,10 @@
-package com.club012.vault_secret.repositories;
+package com.club012.vault.repositories;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.club012.vault_secret.model.Tutorial;
+import com.club012.vault.model.Tutorial;
 
 public interface TutorialRepository extends JpaRepository<Tutorial, Long> {
     List<Tutorial> findByPublished(boolean published);

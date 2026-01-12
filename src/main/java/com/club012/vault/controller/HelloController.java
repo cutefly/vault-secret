@@ -1,4 +1,4 @@
-package com.club012.vault_secret;
+package com.club012.vault.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

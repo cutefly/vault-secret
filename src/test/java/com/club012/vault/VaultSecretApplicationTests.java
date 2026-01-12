@@ -1,4 +1,4 @@
-package com.club012.vault_secret;
+package com.club012.vault;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
