@@ -22,9 +22,9 @@ spring:
 
   cloud:
     vault:
-      uri: https://vault.club012.com # vault domain uri (port: 8200)
+      uri: ${VAULT_ADDR} # vault domain uri (port: 8200)
       authentication: TOKEN
-      token: ${VAULT_AUTH_TOKEN} # vault auth token
+      token: ${VAULT_TOKEN} # vault auth token
       connection-timeout: 3000
       read-timeout: 10000
       kv:

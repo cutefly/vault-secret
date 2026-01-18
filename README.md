@@ -48,9 +48,23 @@ EOF
 ```sh
 $ vault token create \
   -policy="secret-read-only" \
-  -ttl=24h \
-  -explicit-max-ttl=720h \
+  -ttl=1h \
+  -explicit-max-ttl=24h \
   -renewable=true
+
+# build docker image
+$ docker build -t vault-secret .
+# run docker container
+$ docker run --rm --name vault-secret \
+       -p 8082:8080 \
+       -e SPRING_PROFILES_ACTIVE=local \
+       -e VAULT_ADDR=https://vault.club012.com \
+       -e VAULT_TOKEN=${VAULT_TOKEN} \
+       vault-secret
+
+# push to docker registry
+$ docker tag vault-secret:latest registry.club012.com/vault-secret:latest
+$ docker push registry.club012.com/vault-secret:latest
 ```
 
 ## Secret Backends(v2.1.x)
