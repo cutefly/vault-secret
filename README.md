@@ -17,9 +17,9 @@ spring:
         - vault://
   cloud:
     vault:
-      uri: https://vault.club012.com # vault domain uri (port: 8200)
+      uri: ${VAULT_ADDR} # vault domain uri (port: 8200)
       authentication: TOKEN
-      token: ${VAULT_AUTH_TOKEN} # vault auth token
+      token: ${VAULT_TOKEN} # vault auth token
       connection-timeout: 3000
       read-timeout: 10000
       kv:
@@ -58,13 +58,13 @@ $ docker build -t vault-secret .
 $ docker run --rm --name vault-secret \
        -p 8082:8080 \
        -e SPRING_PROFILES_ACTIVE=local \
-       -e VAULT_ADDR=https://vault.club012.com \
+       -e VAULT_ADDR=${VAULT_ADDR} \
        -e VAULT_TOKEN=${VAULT_TOKEN} \
        vault-secret
 
-# push to docker registry
-$ docker tag vault-secret:latest registry.club012.com/vault-secret:latest
-$ docker push registry.club012.com/vault-secret:latest
+# push to docker registry(registry.club012.com)
+$ docker tag vault-secret:latest ${DOCKER_REGISTRY_BASE}/vault-secret:latest
+$ docker push ${DOCKER_REGISTRY_BASE}/vault-secret:latest
 ```
 
 ## Secret Backends(v2.1.x)
