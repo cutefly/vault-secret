@@ -2,11 +2,6 @@ spring:
   application:
     name: vault-secret
 
-  config:
-      import:
-        - optional:file:./env/.env.${spring.profiles.active}[.properties] # local
-        - vault://
-
   # datasource:
   #   driver-class-name: org.postgresql.Driver
   #   url: ${DATASOURCE_URL}
@@ -20,19 +15,11 @@ spring:
       ddl-auto: create
     show-sql: false
 
-  cloud:
-    vault:
-      uri: ${VAULT_ADDR} # vault domain uri (port: 8200)
-      authentication: TOKEN
-      token: ${VAULT_TOKEN} # vault auth token
-      connection-timeout: 3000
-      read-timeout: 10000
-      kv:
-        backend: secret
-        application-name: vault-secret
-        default-context:
-        profiles: ${spring.profiles.active}
-
 server:
   port: 8080
-    
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: env,configprops

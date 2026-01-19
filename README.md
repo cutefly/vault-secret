@@ -52,6 +52,9 @@ $ vault token create \
   -explicit-max-ttl=24h \
   -renewable=true
 
+# build jar
+./gradlew clean bootJar
+
 # build docker image
 $ docker build -t vault-secret .
 # run docker container
@@ -63,8 +66,8 @@ $ docker run --rm --name vault-secret \
        vault-secret
 
 # push to docker registry(registry.club012.com)
-$ docker tag vault-secret:latest ${DOCKER_REGISTRY_BASE}/vault-secret:latest
-$ docker push ${DOCKER_REGISTRY_BASE}/vault-secret:latest
+$ docker tag vault-secret:latest ${DOCKER_REGISTRY_HOST}/vault-secret:${DOCKER_TAG:-latest}
+$ docker push ${DOCKER_REGISTRY_HOST}/vault-secret:${DOCKER_TAG:-latest}
 ```
 
 ## Secret Backends(v2.1.x)
