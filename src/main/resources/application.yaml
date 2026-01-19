@@ -23,3 +23,8 @@ management:
     web:
       exposure:
         include: env,configprops
+  endpoint:
+    env:
+      show-values: always
+    configprops:
+      show-values: always

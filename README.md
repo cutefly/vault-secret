@@ -70,6 +70,12 @@ $ docker tag vault-secret:latest ${DOCKER_REGISTRY_HOST}/vault-secret:${DOCKER_T
 $ docker push ${DOCKER_REGISTRY_HOST}/vault-secret:${DOCKER_TAG:-latest}
 ```
 
+## Read properties
+
+```sh
+curl localhost:8082/actuator/configprops | jq '.contexts | ."vault-secret" | .beans | ."spring.cloud.vault-org.springframework.cloud.vault.config.VaultProperties"'
+```
+
 ## Secret Backends(v2.1.x)
 
 > https://cloud.spring.io/spring-cloud-vault/2.1.x/single/spring-cloud-vault.html#vault.config.backends
